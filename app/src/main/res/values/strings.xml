@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">intento3</string>
+    <string name="app_name">ROMI</string>
+    <string name="no_tienes_cuenta">¿No tienes cuenta?</string>
+    <string name="registrate">Regístrate</string>
+    <string name="inicia_sesion_subrayado"><u>Inicia sesión</u></string>
+
 </resources>

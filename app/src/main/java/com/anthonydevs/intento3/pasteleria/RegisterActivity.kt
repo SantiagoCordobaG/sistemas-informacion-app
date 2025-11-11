@@ -2,10 +2,7 @@ package com.anthonydevs.intento3.pasteleria
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 
@@ -16,43 +13,49 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var etPassword: EditText
     private lateinit var etConfirmPassword: EditText
     private lateinit var btnRegister: Button
-    private lateinit var tvErrorRegister: TextView
-    private lateinit var loginLink: TextView
+    private lateinit var tvLoginLink: TextView
+    private lateinit var btnBack: ImageView // 🔙 Botón atrás
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        // Inicializar Firebase Auth
         auth = FirebaseAuth.getInstance()
 
-        // Referencias a vistas
-        etEmail = findViewById(R.id.register_email_edit_text)
-        etPassword = findViewById(R.id.register_password_edit_text)
-        etConfirmPassword = findViewById(R.id.register_confirm_password_edit_text)
-        btnRegister = findViewById(R.id.register_button)
-        tvErrorRegister = findViewById(R.id.tvErrorRegister)
-        loginLink = findViewById(R.id.login_link)
+        // Vincular vistas
+        etEmail = findViewById(R.id.etEmail)
+        etPassword = findViewById(R.id.etPassword)
+        etConfirmPassword = findViewById(R.id.etConfirmPassword)
+        btnRegister = findViewById(R.id.btnRegister)
+        tvLoginLink = findViewById(R.id.tvLoginLink)
+        btnBack = findViewById(R.id.btnBack) // 🔙 vinculado
 
-        // Acción al presionar "Registrarse"
+        // Acción del botón atrás
+        btnBack.setOnClickListener {
+            // Volver a MainActivity/LoginActivity
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        // Acción del registro
         btnRegister.setOnClickListener {
             val email = etEmail.text.toString().trim()
             val password = etPassword.text.toString().trim()
             val confirmPassword = etConfirmPassword.text.toString().trim()
 
-            // Validaciones básicas
             if (email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-                showError("Por favor, completa todos los campos.")
+                Toast.makeText(this, "Por favor llena todos los campos", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             if (password.length < 6) {
-                showError("La contraseña debe tener al menos 6 caracteres.")
+                Toast.makeText(this, "La contraseña debe tener al menos 6 caracteres", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             if (password != confirmPassword) {
-                showError("Las contraseñas no coinciden.")
+                Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -65,39 +68,34 @@ class RegisterActivity : AppCompatActivity() {
                             if (verifyTask.isSuccessful) {
                                 Toast.makeText(
                                     this,
-                                    "Se ha enviado un correo de verificación a $email. Verifica tu cuenta antes de iniciar sesión.",
+                                    "Correo de verificación enviado a $email. Verifica tu cuenta antes de iniciar sesión.",
                                     Toast.LENGTH_LONG
                                 ).show()
-
-                                // Cerrar sesión para obligar a verificar
                                 auth.signOut()
-
-                                // Redirigir al login
-                                val intent = Intent(this, MainActivity::class.java)
-                                startActivity(intent)
+                                startActivity(Intent(this, MainActivity::class.java))
                                 finish()
                             } else {
-                                showError("Error al enviar correo de verificación: ${verifyTask.exception?.localizedMessage}")
+                                Toast.makeText(
+                                    this,
+                                    "Error al enviar correo de verificación: ${verifyTask.exception?.message}",
+                                    Toast.LENGTH_LONG
+                                ).show()
                             }
                         }
                     } else {
-                        val errorMsg = task.exception?.localizedMessage ?: "Error desconocido"
-                        showError("No se pudo registrar: $errorMsg")
+                        Toast.makeText(
+                            this,
+                            "No se pudo registrar: ${task.exception?.message}",
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
                 }
         }
 
         // Ir al login si ya tiene cuenta
-        loginLink.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+        tvLoginLink.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
-    }
-
-    // Mostrar error en el TextView
-    private fun showError(message: String) {
-        tvErrorRegister.text = message
-        tvErrorRegister.visibility = TextView.VISIBLE
     }
 }

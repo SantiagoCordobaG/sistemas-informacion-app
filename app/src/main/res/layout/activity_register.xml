@@ -1,98 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    tools:context=".RegisterActivity"
-    android:background="#FFF5F8">
+    android:background="#F6DDE4"
+    tools:context=".RegisterActivity">
 
+    <!-- Botón atrás -->
+    <ImageView
+        android:id="@+id/btnBack"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="Atrás"
+        android:src="@drawable/ic_arrow_back"
+        android:tint="#5B3E42"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Tarjeta blanca con contenido principal -->
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/register_card"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="32dp"
-        android:gravity="center_horizontal">
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/white_rounded_bg"
+        android:padding="24dp"
+        app:layout_constraintTop_toBottomOf="@id/btnBack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-        <TextView
-            android:id="@+id/register_title"
-            android:layout_width="wrap_content"
+        <!-- Logo circular -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Crear cuenta"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            android:textColor="#333333"
-            android:layout_marginBottom="24dp" />
+            android:gravity="center">
 
-        <!-- Campo Email -->
+            <LinearLayout
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="152dp"
+                    android:contentDescription="Logo ROMI"
+                    android:src="@drawable/romilogo" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Textos -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Crea tu cuenta"
+            android:textAlignment="center"
+            android:textColor="#5B3E42"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Email -->
         <EditText
-            android:id="@+id/register_email_edit_text"
+            android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Correo electrónico"
+            android:background="@null"
             android:inputType="textEmailAddress"
-            android:drawableStart="@android:drawable/ic_dialog_email"
-            android:drawablePadding="10dp"
-            android:background="@android:drawable/edit_text"
-            android:padding="12dp"
-            android:layout_marginBottom="16dp" />
+            android:textColorHint="#A98993"
+            android:textColor="#5B3E42"
+            android:padding="4dp" />
 
-        <!-- Campo Contraseña -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E4A6B0" />
+
+        <!-- Contraseña -->
         <EditText
-            android:id="@+id/register_password_edit_text"
+            android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Contraseña"
+            android:background="@null"
             android:inputType="textPassword"
-            android:drawableStart="@android:drawable/ic_lock_idle_lock"
-            android:drawablePadding="10dp"
-            android:background="@android:drawable/edit_text"
-            android:padding="12dp"
-            android:layout_marginBottom="16dp" />
+            android:textColorHint="#A98993"
+            android:textColor="#5B3E42"
+            android:paddingTop="16dp"
+            android:paddingBottom="4dp" />
 
-        <!-- Campo Confirmar Contraseña -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E4A6B0" />
+
+        <!-- Confirmar contraseña -->
         <EditText
-            android:id="@+id/register_confirm_password_edit_text"
+            android:id="@+id/etConfirmPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Confirmar contraseña"
+            android:background="@null"
             android:inputType="textPassword"
-            android:drawableStart="@android:drawable/ic_lock_lock"
-            android:drawablePadding="10dp"
-            android:background="@android:drawable/edit_text"
-            android:padding="12dp"
-            android:layout_marginBottom="20dp" />
+            android:textColorHint="#A98993"
+            android:textColor="#5B3E42"
+            android:paddingTop="16dp"
+            android:paddingBottom="4dp" />
 
-        <!-- Mensaje de error -->
-        <TextView
-            android:id="@+id/tvErrorRegister"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#E53935"
-            android:textSize="14sp"
-            android:visibility="gone"
-            android:gravity="center"
-            android:layout_marginBottom="12dp" />
+            android:layout_height="1dp"
+            android:background="#E4A6B0" />
 
-        <!-- Botón de Registro -->
+        <!-- Botón registrar -->
         <Button
-            android:id="@+id/register_button"
+            android:id="@+id/btnRegister"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="52dp"
             android:text="Registrarse"
-            android:textAllCaps="false"
-            android:backgroundTint="#E8A0CD"
-            android:textColor="#FFFFFF"
-            android:layout_marginBottom="24dp" />
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/rounded_button_bg" />
 
-        <!-- Enlace para ir al login -->
+    </LinearLayout>
+
+    <!-- Enlace a login -->
+    <LinearLayout
+        android:id="@+id/login_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/register_card"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
         <TextView
-            android:id="@+id/login_link"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="¿Ya tienes una cuenta? Inicia sesión"
-            android:textColor="#00796B"
-            android:textSize="14sp"
-            android:layout_marginTop="12dp" />
+            android:text="¿Ya tienes cuenta?"
+            android:textColor="#5B3E42"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvLoginLink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Inicia sesión"
+            android:textColor="#C84B65"
+            android:textStyle="bold"
+            android:textSize="14sp" />
     </LinearLayout>
-</ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

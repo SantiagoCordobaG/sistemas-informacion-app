@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.anthonydevs.intento3.pasteleria">
 
-    <!-- 🔒 Permiso para conectarse a Firebase -->
+    <!-- 🔒 Permiso para conectarse a Internet -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".MyApp"
         android:allowBackup="true"
-        android:dataExtractionRules="@xml/data_extraction_rules"
-        android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.Intento3">
 
-        <!-- Actividad principal (Inicio/Login o pantalla inicial) -->
+        <!-- Actividad principal (Inicio/Login) -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -32,18 +29,26 @@
             android:name=".CatalogoActivity"
             android:exported="false" />
 
-        <!-- Actividad del Registro -->
+        <!-- Actividad de registro -->
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
 
-        <!-- Actividad del Cuenta -->
-       <activity android:name=".CuentaActivity" />
+        <!-- Actividad de perfil / cuenta -->
+        <activity
+            android:name=".CuentaActivity"
+            android:exported="false" />
 
-        <!-- Actividad del Cuenta -->
-        <activity android:name=".CarritoActivity" />
+        <!-- Actividad del carrito -->
+        <activity
+            android:name=".CarritoActivity"
+            android:exported="false" />
 
+        <!-- Actividad de pago -->
+        <activity
+            android:name=".PagoActivity"
+            android:exported="false" />
 
-   </application>
+    </application>
 
 </manifest>

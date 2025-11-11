@@ -1,84 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F6DDE4"
     tools:context=".CuentaActivity">
 
-    <!-- Contenedor principal -->
+    <!-- Encabezado -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:padding="24dp">
+        android:layout_height="80dp"
+        android:background="#E4A6B0"
+        android:gravity="center_vertical"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp">
 
-        <!-- Título -->
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_arrow_back"
+            android:tint="@android:color/white" />
+
         <TextView
-            android:id="@+id/tvTituloCuenta"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Mi Cuenta"
-            android:textSize="24sp"
+            android:text="Mi Perfil"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_marginBottom="24dp" />
-
-        <!-- Nombre -->
-        <TextView
-            android:id="@+id/tvNombreUsuario"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Nombre: -"
-            android:textSize="18sp"
-            android:layout_marginBottom="12dp" />
-
-        <!-- Correo -->
-        <TextView
-            android:id="@+id/tvCorreoUsuario"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Correo: -"
-            android:textSize="18sp"
-            android:layout_marginBottom="12dp" />
-
-        <!-- Estado 2FA // NO HACE NADA -->
-        <TextView
-            android:id="@+id/tvEstado2FA"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="2FA: Deshabilitado"
-            android:textSize="18sp"
-            android:layout_marginBottom="24dp" />
-
-        <!-- Botón activar/desactivar 2FA -->
-        <Button
-            android:id="@+id/btnToggle2FA"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Habilitar 2FA"
-            android:layout_marginBottom="16dp" />
-
-        <!-- Botón cerrar sesión -->
-        <Button
-            android:id="@+id/btnCerrarSesion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Cerrar sesión"
-            android:backgroundTint="@android:color/holo_red_light" />
+            android:gravity="center" />
     </LinearLayout>
 
-    <!-- 🔹 Barra inferior de navegación -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        app:menu="@menu/bottom_nav_menu"
-        app:itemIconTint="@color/black"
-        app:itemTextColor="@color/black" />
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FEF9FA"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- Imagen de perfil -->
+            <ImageView
+                android:id="@+id/ivPerfil"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/circle_background"
+                android:contentDescription="Foto de perfil"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_user_placeholder" />
+
+            <!-- Nombre -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="Nombre"
+                android:textColor="#5B3E42"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_input"
+                android:hint="Tu nombre completo"
+                android:padding="12dp"
+                android:textColor="#5B3E42"
+                android:textSize="16sp" />
+
+            <!-- Email (no editable) -->
+            <TextView
+                android:id="@+id/tvEmailUsuario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="usuario@ejemplo.com"
+                android:textColor="#5B3E42"
+                android:textSize="16sp" />
+
+            <!-- Dirección -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="Dirección"
+                android:textColor="#5B3E42"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etDireccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/rounded_input"
+                android:hint="Calle y número"
+                android:padding="12dp"
+                android:textColor="#5B3E42"
+                android:textSize="16sp" />
+
+            <!-- Contraseña -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="Contraseña"
+                android:textColor="#5B3E42"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/rounded_input"
+                android:drawableEnd="@drawable/ic_lock"
+                android:hint="********"
+                android:inputType="textPassword"
+                android:padding="12dp"
+                android:textColor="#5B3E42"
+                android:textSize="16sp" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/gradient_separator" />
+
+            <!-- Botones -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <Button
+                    android:id="@+id/btnEditarPerfil"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#E4A6B0"
+                    android:text="Editar perfil ✏️"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btnCerrarSesion"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#E4A6B0"
+                    android:text="Cerrar sesión"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

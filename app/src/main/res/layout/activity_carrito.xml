@@ -1,35 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFF8F5">
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <!-- 🔹 Título -->
     <TextView
-        android:id="@+id/tvTituloCarrito"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tu Carrito"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        android:text="Mi Carrito"
+        android:textSize="22sp"
         android:textStyle="bold"
-        android:padding="16dp"
-        android:textColor="#000000" />
+        android:gravity="center"
+        android:layout_marginBottom="16dp"/>
 
-    <!-- 🔹 Lista de productos -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerCarrito"
+    <ListView
+        android:id="@+id/listViewCarrito"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:padding="8dp" />
+        android:layout_weight="1"/>
 
-    <!-- 🔹 Barra inferior -->
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNav"
+    <TextView
+        android:id="@+id/tvTotal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:menu="@menu/bottom_nav_menu" />
+        android:text="Total: $0.00"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btnPagar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pagar"
+        android:backgroundTint="#C84B65"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"/>
+
 </LinearLayout>

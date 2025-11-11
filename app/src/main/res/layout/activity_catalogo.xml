@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F6DDE4"
     tools:context=".CatalogoActivity">
 
     <!-- Contenedor principal con desplazamiento -->
@@ -15,38 +16,52 @@
         android:padding="8dp"
         android:clipToPadding="false">
 
-        <!-- 🔍 Barra de búsqueda -->
-        <LinearLayout
+        <!-- 🔍 Barra de búsqueda envuelta en CardView para borde redondeado -->
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="8dp"
-            android:layout_marginBottom="8dp">
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            android:clipToPadding="false"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp">
 
-            <EditText
-                android:id="@+id/etBuscarProducto"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Buscar producto..."
-                android:background="@drawable/edittext_background"
-                android:padding="10dp"
-                android:drawableStart="@android:drawable/ic_menu_search"
-                android:drawablePadding="8dp"
-                android:inputType="text"
-                android:imeOptions="actionSearch" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
 
-            <Button
-                android:id="@+id/btnBuscar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Buscar"
-                android:layout_marginStart="8dp"
-                android:backgroundTint="@color/teal_700"
-                android:textColor="@android:color/white"
-                android:elevation="3dp" />
-        </LinearLayout>
+                <EditText
+                    android:id="@+id/etBuscarProducto"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Buscar producto..."
+                    android:background="@android:color/transparent"
+                    android:drawableStart="@android:drawable/ic_menu_search"
+                    android:drawablePadding="8dp"
+                    android:paddingVertical="12dp"
+                    android:textColor="#5B3E42"
+                    android:textSize="16sp"
+                    android:inputType="text"
+                    android:imeOptions="actionSearch"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnBuscar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Buscar"
+                    android:layout_marginStart="8dp"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp"
+                    android:textColor="@android:color/white"
+                    android:elevation="3dp"
+                    android:backgroundTint="#E4A6B0"
+                    app:cornerRadius="16dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
         <!-- 🔄 Lista de productos -->
         <androidx.recyclerview.widget.RecyclerView
@@ -54,26 +69,12 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:paddingBottom="?attr/actionBarSize"
             android:clipToPadding="false"
             android:scrollbars="vertical"
+            android:paddingBottom="?attr/actionBarSize"
             tools:listitem="@layout/item_catalogo"/>
-    </LinearLayout>
 
-    <!-- 🔒 Botón de cerrar sesión
-    <Button
-        android:id="@+id/btnCerrarSesion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cerrar sesión"
-        android:layout_gravity="top|end"
-        android:layout_margin="16dp"
-        android:backgroundTint="@color/teal_700"
-        android:textColor="@android:color/white"
-        android:paddingHorizontal="16dp"
-        android:paddingVertical="8dp"
-        android:elevation="4dp" />
-    -->
+    </LinearLayout>
 
     <!-- 🔽 Barra de navegación inferior fija -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
