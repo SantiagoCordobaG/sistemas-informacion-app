@@ -137,12 +137,12 @@ class CatalogoActivity : AppCompatActivity() {
 
     private fun loadProducts() {
         listaProductos = mutableListOf(
-            Producto("1", "Pastel vintage de cereza", "Pastel en forma de corazón, personalizable con el mensaje que tú quieras.hazlo saber en nuestro whatsapp", 40000.0),
-            Producto("2", "Pastel de cumpleaños azul", "Hermoso pastel decorado con crema azul perfecta para celebraciones especiales. Sabor personalizable.", 45000.0),
-            Producto("3", "Pastel de Arándano para cumpleaños", "Delicioso pastel con arándanos frescos y crema suave, ideal para fiestas familiares.", 38000.0),
-            Producto("4", "Pastel fiesta colorida", "Pastel alegre con decoraciones vibrantes y múltiples sabores para hacer tu fiesta inolvidable.", 42000.0),
-            Producto("5", "Pastel de Chocolate", "Delicioso pastel de chocolate con cobertura de cacao y relleno cremoso. Un clásico irresistible.", 35000.0),
-            Producto("6", "Torta de Zanahoria", "Torta húmeda de zanahoria con frosting de queso crema. Perfecta para cualquier ocasión.", 37000.0)
+            Producto("1", "Ramo de rosas x6", "Ramo personalizable a tu gusto.hazlo saber en nuestro whatsapp", 40000.0),
+            Producto("2", "Adorno primaveral grande", "Para un gran amor, un gran ramo. Ramo personalizable y muy vendido.", 45000.0),
+            Producto("3", "Flores rosadas de temporada", "Flores para un momento especial, o para una especial; el momento es AHORA.", 38000.0),
+            Producto("4", "Ramo colorido", "Ideal para una persona que le da color a tu vida, este ramo sacara mas de una sonrisa.", 42000.0),
+            Producto("5", "Rosas y Lilium", "Definitvamente nuestro arreglo mas querido y pedido por todos.", 35000.0),
+            Producto("6", "Ramo primaveral", "Un ramo especial que no necesita presentacion, un clasico de nuestras sedes.", 37000.0)
         )
 
         listaFiltrada.clear()
