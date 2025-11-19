@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Pastelería App</string>
+    <string name="app_name">ROMI</string>
     
     <!-- Login Screen -->
     <string name="login_button">Iniciar sesión</string>
