@@ -38,7 +38,7 @@
     <string name="logout">Cerrar sesión</string>
     <string name="product_image_description">Imagen del producto</string>
     <string name="price_example">$25.000</string>
-    <string name="product_example_name">Pastel de ejemplo</string>
+    <string name="product_example_name">Flor de ejemplo</string>
     
     <!-- Cart Screen -->
     <string name="cart_title">Tu Carrito</string>
