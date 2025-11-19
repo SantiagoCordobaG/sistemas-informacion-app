@@ -13,21 +13,21 @@ object ImageHelper {
      * 4. Si la imagen no existe, se usará la imagen por defecto (imagen_fondo_login)
      * 
      * NOMBRES DE ARCHIVOS NECESARIOS:
-     * - pastel_cereza.png (o .jpg/.jpeg/.webp) para ID "1"
-     * - pastel_azul.png para ID "2"
-     * - pastel_arandano.png para ID "3"
-     * - pastel_colorida.png para ID "4"
-     * - pastel_chocolate.png para ID "5"
-     * - pastel_zanahoria.png para ID "6"
+     * - flores_ramo_rosas.png (o .jpg/.jpeg/.webp) para ID "1"
+     * - flores_estacion_colorido.png para ID "2"
+     * - flores_rosadas.png para ID "3"
+     * - flores_multicolor_grande.png para ID "4"
+     * - flores_rosas_liliums.png para ID "5"
+     * - flores_primaverales.png para ID "6"
      */
     fun getImageResource(productId: String): Int {
         return when (productId) {
-            "1" -> tryGetDrawable("pastel_cereza") // Pastel vintage de cereza
-            "2" -> tryGetDrawable("pastel_azul") // Pastel de cumpleaños azul
-            "3" -> tryGetDrawable("pastel_arandano") // Pastel de Arándano
-            "4" -> tryGetDrawable("pastel_colorida") // Pastel fiesta colorida
-            "5" -> tryGetDrawable("pastel_chocolate") // Pastel de Chocolate
-            "6" -> tryGetDrawable("pastel_zanahoria") // Torta de Zanahoria
+            "1" -> tryGetDrawable("flores_ramo_rosas") // Pastel vintage de cereza
+            "2" -> tryGetDrawable("flores_estacion_colorido") // Pastel de cumpleaños azul
+            "3" -> tryGetDrawable("flores_rosadas") // Pastel de Arándano
+            "4" -> tryGetDrawable("flores_multicolor_grande") // Pastel fiesta colorida
+            "5" -> tryGetDrawable("flores_rosas_liliums") // Pastel de Chocolate
+            "6" -> tryGetDrawable("flores_primaverales") // Torta de Zanahoria
             else -> R.drawable.imagen_fondo_login // Imagen por defecto
         }
     }
